@@ -1,13 +1,13 @@
-# MSSQL 2008-2016 Multi instance with WSFC
-Zabbix template for MSSQL server with implementation WSFC (Windows Server Failover Cluster).
+# MSSQL 2008-2016 Multi instance with WSFC (autodiscovery)
+Zabbix discovery template for MSSQL server with implementation WSFC (Windows Server Failover Cluster).
 
-If you don't have WSFC please use this template:https://share.zabbix.com/databases/microsoft-sql-server/mssql-2008-2016-multiinstance (Google link in comments from Alexander Alexandrov)
+Please use this https://share.zabbix.com/databases/microsoft-sql-server/mssql-2008-2016-multiinstance template if you don't have WSFC. (Google link in comments from Alexander Alexandrov)
 
 Requirements:
 1) **Zabbix 3+**
 
 Install:
-1) **Create regular expression for not necessary DBs**
+1) **Create regular expression to filter DBs**
 
 Go to: Administration → General
 Select Regular expressions from the dropdown
@@ -25,7 +25,10 @@ Copy **scripts** directory to C:\Program Files\Zabbix Agent\
 
 Copy **userparameter_mssql.conf** C:\Program Files\Zabbix Agent\conf.d
 
-Please if you have different path you need change location in userparameter_mssql
+You need change location in userparameter_mssql.conf if you have different path.
+
+Change timeout in zabbix_agent.conf (Timeout=30)
+Restart zabbix agent.
 
 3) **Import template**
 
