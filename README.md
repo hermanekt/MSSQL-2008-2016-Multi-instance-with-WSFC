@@ -1,15 +1,35 @@
 # MSSQL 2008-2016 Multi instance with WSFC
-Zabbix template for apache 2 web server without external script. This template have macros for setting URL status page. 
-This template uses only one http item as a master item and other items depend it.
+Zabbix template for MSSQL server with implementation WSFC (Windows Server Failover Cluster).
+
+If you don't have WSFC please use this template:https://share.zabbix.com/databases/microsoft-sql-server/mssql-2008-2016-multiinstance (Google link in comments from Alexander Alexandrov)
 
 Requirements:
 1) **Zabbix 3+**
 
+Install:
+1) **Create regular expression for not necessary DBs**
 
-Name: Databases for discovery
-Expression: ^(master|model|msdb|ReportServer|ReportServerTempDB|tempdb)$
-Type: Result is FALSE
+Go to: Administration → General
+Select Regular expressions from the dropdown
+Click on New regular expression
 
+**Name: Databases for discovery**
+
+**Expression: ^(master|model|msdb|ReportServer|ReportServerTempDB|tempdb)$**
+
+**Type: Result is FALSE**
+
+2) **Copy files**
+
+Copy **scripts** directory to C:\Program Files\Zabbix Agent\
+
+Copy **userparameter_mssql.conf** C:\Program Files\Zabbix Agent\conf.d
+
+Please if you have different path you need change location in userparameter_mssql
+
+3) **Import template**
+
+4) **Assign template to host**
 
 **Latest data**
 ![alt Apache2 latest data](https://github.com/hermanekt/MSSQL-2008-2016-Multi-instance-with-WSFC/raw/master/IMG/MSSQL_LATEST_DATA.jpg)
